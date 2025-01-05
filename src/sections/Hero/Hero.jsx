@@ -57,7 +57,7 @@ function Hero() {
           businesses.
         </p>
         <a href={CV} download>
-          <button className="hover">Resume</button>
+          <button className="hover" style={{cursor:'pointer'}}>Resume</button>
         </a>
       </div>
     </section>

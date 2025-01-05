@@ -70,9 +70,6 @@ p {
   margin-bottom: 30px;
 }
 
-.hover {
-  cursor: pointer;
-}
 
 @media (width >= 800px) {
   #root {
