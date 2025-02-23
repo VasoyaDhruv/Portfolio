@@ -1,21 +1,33 @@
 :root {
   --background-color: #fff;
+  --bg-color: #fff;
+  --bg-alt: #f8f9fa;
+  --primary-color: #0987f2;
   --btn-color: #0987f2;
   --btn-text-color: #fff;
   --project-card-bg: #ffffff00;
   --text-color: #222;
+  --text-light: #666;
   --form-text-color: #555;
   --footer-text-color: #888;
+  --border-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme='dark'] {
-  --background-color: #222;
+  --background-color: #121212;
+  --bg-color: #121212;
+  --bg-alt: #1a1a1a;
+  --primary-color: #4dabf7;
   --btn-color: #fff;
   --btn-text-color: #222;
-  --project-card-bg: #fff;
+  --project-card-bg: #1a1a1a;
   --text-color: #fff;
+  --text-light: #aaa;
   --form-text-color: #fff;
   --footer-text-color: #bbb;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(255, 255, 255, 0.05);
 }
 
 body {
@@ -23,12 +35,15 @@ body {
   display: flex;
   justify-content: center;
   margin: 0 auto 60px;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
   display: flex;
   flex-direction: column;
   gap: 60px;
+  width: 100%;
 }
 
 h1,
@@ -38,6 +53,7 @@ p {
   color: var(--text-color);
   margin: 0;
   padding: 0;
+  transition: color 0.3s ease;
 }
 
 h2,
@@ -51,25 +67,69 @@ h2 {
   text-transform: uppercase;
 }
 
-h2,
-h3 {
-  font-size: 20px;
+section {
+  background-color: var(--bg-color);
+  transition: background-color 0.3s ease;
 }
 
-h1 {
-  font-family: 'Rubik', sans-serif;
-  font-size: 32px;
+.section__title {
+  color: var(--text-color);
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
 }
 
-p {
-  font-size: 16px;
-  font-weight: 300;
+.section__subtitle {
+  color: var(--text-light);
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  transition: color 0.3s ease;
 }
 
-.sectionTitle {
-  margin-bottom: 30px;
+/* Common card styles */
+.card {
+  background: var(--bg-color);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px var(--shadow-color);
+}
+
+/* Common button styles */
+.button {
+  background: var(--btn-color);
+  color: var(--btn-text-color);
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* Common link styles */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--text-color);
+}
 
 @media (width >= 800px) {
   #root {

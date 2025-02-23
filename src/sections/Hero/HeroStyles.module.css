@@ -9,6 +9,9 @@
 
   .hero {
     max-width: 200px;
+    border-radius: 50%;
+    z-index: 1;
+    position: relative;
   }
 
   span {
@@ -75,6 +78,55 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.imageWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.imageWrapper::before {
+  content: '';
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  padding: 5px;
+  background: linear-gradient(
+    45deg,
+    #12c2e9,
+    #c471ed,
+    #f64f59
+  );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: rotate 4s linear infinite, ripple 3s infinite;
+}
+
+@keyframes rotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 @media (width >= 800px) {

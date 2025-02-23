@@ -2,6 +2,9 @@
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding: 6rem 0;
+  background: var(--bg-color);
+  min-height: 100vh;
 
   img {
     /* max-width: 250px; */
@@ -22,18 +25,108 @@
   }
 }
 
-.gridContainer {
-  display: grid;
-  grid-template-columns:1fr 1fr 1fr;
-  gap: 80px;
-  margin: 0 100px;
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
 }
 
-@media (width >= 800px) {
-  .projectsContainer {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    padding: 0 30px;
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  padding: 0 1rem;
+}
+
+.filterButton {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.filterButton:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.filterButton.active {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+  color: white;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  padding: 0 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 500px; /* Ensure consistent height during filtering */
+}
+
+.gridContainer > div {
+  height: 100%;
+  width: 100%;
+}
+
+.seeMore {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.seeMoreLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.seeMoreLink:hover {
+  color: var(--text-color);
+}
+
+.arrow {
+  display: inline-block;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 1200px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 2rem;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 4rem 0;
+  }
+
+  .gridContainer {
+    grid-template-columns: 1fr;
+    padding: 0 1.5rem;
+    min-height: 400px;
+  }
+
+  .filters {
+    gap: 0.5rem;
+  }
+
+  .filterButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
   }
 }

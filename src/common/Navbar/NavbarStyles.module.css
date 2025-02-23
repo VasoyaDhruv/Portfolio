@@ -1,0 +1,238 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  transform: translateY(0);
+}
+
+.navbar.dark {
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar.hidden {
+  transform: translateY(-100%);
+}
+
+.navbar.scrolled {
+  padding: 0.8rem 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar.scrolled.dark {
+  background: rgba(0, 0, 0, 0.95);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.logoContainer {
+  flex: 0 0 auto;
+}
+
+.logo {
+  text-decoration: none;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+
+.dark .logo {
+  color: #fff;
+}
+
+.logoText {
+  background: linear-gradient(135deg, #000, #333);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.dark .logoText {
+  background: linear-gradient(135deg, #fff, #ccc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logoHighlight {
+  color: #000;
+  margin-left: 2px;
+  font-size: 2.2rem;
+}
+
+.dark .logoHighlight {
+  color: #fff;
+}
+
+.navLinks {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navLinks li {
+  position: relative;
+}
+
+.navLinks a {
+  color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.dark .navLinks a {
+  color: #fff;
+}
+
+.navLinks a:hover {
+  color: #666;
+}
+
+.dark .navLinks a:hover {
+  color: #999;
+}
+
+.active {
+  color: #000 !important;
+  font-weight: 600 !important;
+}
+
+.dark .active {
+  color: #fff !important;
+}
+
+.activeIndicator {
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #000;
+  border-radius: 1px;
+}
+
+.dark .activeIndicator {
+  background: #fff;
+}
+
+.themeToggle {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dark .themeToggle {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.themeToggle:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.dark .themeToggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.themeToggle img {
+  width: 24px;
+  height: 24px;
+}
+
+.menuButton {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.menuButton span {
+  width: 100%;
+  height: 2px;
+  background: #000;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.dark .menuButton span {
+  background: #fff;
+}
+
+.menuButton.open span:first-child {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.menuButton.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menuButton.open span:last-child {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+@media (max-width: 768px) {
+  .menuButton {
+    display: flex;
+  }
+
+  .navLinks {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    max-width: 300px;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 5rem 2rem;
+    transition: right 0.3s ease;
+    gap: 1.5rem;
+  }
+
+  .dark .navLinks {
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  .navLinks.open {
+    right: 0;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .logoHighlight {
+    font-size: 1.8rem;
+  }
+}
