@@ -9,7 +9,7 @@ function Navbar() {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState('hero');
   const [menuOpen, setMenuOpen] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
 
@@ -19,21 +19,21 @@ function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       
-      // Show/hide navbar based on scroll direction
-      if (currentScrollY > lastScrollY) {
-        setVisible(false); // Scrolling down - hide navbar
+      // Show/hide navbar based on scroll direction with threshold
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setVisible(false);
       } else {
-        setVisible(true); // Scrolling up - show navbar
+        setVisible(true);
       }
       
       // Add background when scrolled
-      setScrolled(currentScrollY > 50);
+      setScrolled(currentScrollY > 20);
       setLastScrollY(currentScrollY);
     };
 
     const handleIntersection = (entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
           setActiveSection(entry.target.id);
         }
       });
@@ -42,39 +42,106 @@ function Navbar() {
     window.addEventListener('scroll', handleScroll);
     
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.5
+      threshold: 0.5,
+      rootMargin: '-20% 0px -30% 0px'
     });
 
     const sections = document.querySelectorAll('section[id]');
     sections.forEach(section => observer.observe(section));
 
+    // Close menu when clicking outside
+    const handleClickOutside = (event) => {
+      if (menuOpen && !event.target.closest(`.${styles.navLinks}`) && !event.target.closest(`.${styles.menuButton}`)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
       sections.forEach(section => observer.unobserve(section));
     };
-  }, [lastScrollY]);
+  }, [lastScrollY, menuOpen]);
 
   const navLinks = [
     { href: '#hero', label: 'Home' },
     { href: '#about', label: 'About' },
     { href: '#experience', label: 'Experience' },
-    { href: '#education', label: 'Education' },
+    // { href: '#education', label: 'Education' },
     { href: '#projects', label: 'Projects' },
     { href: '#skills', label: 'Skills' },
     { href: '#contact', label: 'Contact' }
   ];
 
+  const navVariants = {
+    hidden: { y: -100, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        duration: 0.5
+      }
+    }
+  };
+
+  const logoVariants = {
+    initial: { scale: 1 },
+    hover: { 
+      scale: 1.05,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const linkVariants = {
+    initial: { y: 0 },
+    hover: { 
+      y: -2,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const scrollToSection = (e, sectionId) => {
+    e.preventDefault();
+    const element = document.querySelector(sectionId);
+    if (element) {
+      const offset = 80; // Adjust this value based on your navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+      setMenuOpen(false);
+    }
+  };
+
   return (
     <motion.nav 
       className={`${styles.navbar} ${scrolled ? styles.scrolled : ''} ${!visible ? styles.hidden : ''} ${theme === 'dark' ? styles.dark : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      variants={navVariants}
+      initial="hidden"
+      animate="visible"
     >
       <motion.div 
         className={styles.logoContainer}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        variants={logoVariants}
+        initial="initial"
+        whileHover="hover"
+        whileTap={{ scale: 0.95 }}
       >
         <a href="#hero" className={styles.logo}>
           <span className={styles.logoText}>Dhruv</span>
@@ -85,6 +152,7 @@ function Navbar() {
       <button 
         className={`${styles.menuButton} ${menuOpen ? styles.open : ''}`}
         onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
       >
         <span></span>
         <span></span>
@@ -96,24 +164,36 @@ function Navbar() {
           className={`${styles.navLinks} ${menuOpen ? styles.open : ''}`}
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ 
+            type: "spring",
+            stiffness: 100,
+            damping: 20,
+            staggerChildren: 0.1
+          }}
         >
-          {navLinks.map((link) => (
+          {navLinks.map((link, index) => (
             <motion.li 
               key={link.href}
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              variants={linkVariants}
+              initial="initial"
+              whileHover="hover"
+              custom={index}
             >
               <a 
                 href={link.href}
                 className={activeSection === link.href.slice(1) ? styles.active : ''}
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => scrollToSection(e, link.href)}
               >
                 {link.label}
                 {activeSection === link.href.slice(1) && (
                   <motion.div 
                     className={styles.activeIndicator}
                     layoutId="activeIndicator"
+                    transition={{
+                      type: "spring",
+                      stiffness: 300,
+                      damping: 30
+                    }}
                   />
                 )}
               </a>
@@ -125,14 +205,15 @@ function Navbar() {
       <motion.div 
         className={styles.themeToggle} 
         onClick={toggleTheme}
-        whileHover={{ scale: 1.1 }}
+        whileHover={{rotate: theme === 'light' ? 90 : 0 }}
         whileTap={{ scale: 0.9 }}
+        transition={{ type: "spring", stiffness: 400, damping: 10 }}
       >
         <motion.img 
           src={themeIcon} 
           alt="Toggle Theme"
           initial={{ rotate: 0 }}
-          animate={{ rotate: 360 }}
+          animate={{ rotate: theme === 'light' ? 0 :360 }}
           transition={{ duration: 0.5 }}
         />
       </motion.div>

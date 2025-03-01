@@ -27,6 +27,9 @@ function Hero() {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, ease: "easeOut" }}
+      style={{
+        background: `${theme === "light" ? "#f1f1f1" : ""}`,
+      }}
     >
       <div className={styles.colorModeContainer}>
         {/* Profile Image with Water Drop Animation */}
@@ -35,21 +38,9 @@ function Hero() {
             src={heroImg}
             className={styles.hero}
             alt="Profile"
-            whileHover={{ scale: 1.1, rotate: 3 }}
             transition={{ type: "spring", stiffness: 200 }}
           />
         </div>
-
-        {/* Theme Toggle Button with Hover Animation */}
-        <motion.img
-          className={styles.colorMode}
-          src={themeIcon}
-          alt="Color mode icon"
-          onClick={toggleTheme}
-          whileTap={{ scale: 0.8 }}
-          whileHover={{ rotate: 20 }}
-          transition={{ duration: 0.3 }}
-        />
       </div>
 
       <div className={styles.info}>
@@ -75,7 +66,7 @@ function Hero() {
           <motion.a
             href="https://github.com/VasoyaDhruv"
             target="_blank"
-            whileHover={{ scale: 1.2, rotate: 10 }}
+            whileHover={{ scale: 1.2, rotate: 2 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <img src={githubIcon} alt="Github icon" />
@@ -84,7 +75,7 @@ function Hero() {
           <motion.a
             href="https://www.linkedin.com/in/dhruv-vasoya-b46102250/"
             target="_blank"
-            whileHover={{ scale: 1.2, rotate: 10 }}
+            whileHover={{ scale: 1.2, rotate: 2 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <img src={linkedinIcon} alt="Linkedin icon" />

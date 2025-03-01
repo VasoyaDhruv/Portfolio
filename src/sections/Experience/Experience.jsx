@@ -5,43 +5,30 @@ import { motion } from 'framer-motion';
 const Experience = () => {
   const experiences = [
     {
-      title: 'Senior Software Engineer',
-      company: 'Google',
-      period: '2023 - Present',
-      description: 'Leading a team of 5 engineers in developing cloud-native applications using React, Node.js, and Google Cloud Platform.',
+      title: 'Web Developer',
+      company: 'Aimbrill Techinfo',
+      period: 'Jan 2024 - Feb 2025',
+      description: 'Developed and maintained scalable web applications using the MERN stack.',
       achievements: [
-        'Improved application performance by 40%',
-        'Implemented CI/CD pipeline reducing deployment time by 60%',
-        'Mentored 3 junior developers'
+        'Developed scalable web applications using MERN stack ensuring optimal performance',
+        'Designed and implemented RESTful APIs using Node.js and Express',
+        'Implemented JWT-based authentication for enhanced security'
       ],
-      tech: ['React', 'Node.js', 'GCP', 'Kubernetes'],
-      logo: '🌟'
+      tech: ['React', 'Node.js', 'MongoDB', 'Express', 'JWT'],
+      logo: '💼'
     },
     {
-      title: 'Full Stack Developer',
-      company: 'Microsoft',
-      period: '2021 - 2023',
-      description: 'Developed and maintained enterprise-level applications using .NET Core and React.',
+      title: 'B.Tech Student',
+      company: 'SILVER OAK UNIVERSITY',
+      period: '2021 - 2025',
+      description: 'Information Technology | CGPA: 9.00/10.0',
       achievements: [
-        'Built real-time analytics dashboard',
-        'Reduced API response time by 35%',
-        'Awarded Best Team Player 2022'
+        'Specialized in Object-Oriented Programming (OOP)',
+        'Studied Data Structures and Algorithms (DSA)',
+        'Learned Database Management Systems (DBMS)'
       ],
-      tech: ['React', '.NET Core', 'Azure', 'SQL'],
-      logo: '💻'
-    },
-    {
-      title: 'Software Developer Intern',
-      company: 'Amazon',
-      period: '2020 - 2021',
-      description: 'Worked on AWS Lambda functions and serverless architecture.',
-      achievements: [
-        'Developed automated testing framework',
-        'Contributed to open-source projects',
-        'Extended internship to full-time offer'
-      ],
-      tech: ['AWS', 'Python', 'Node.js', 'DynamoDB'],
-      logo: '🚀'
+      tech: ['C', 'Java', 'JavaScript', 'DSA', 'DBMS'],
+      logo: '🎓'
     }
   ];
 
@@ -89,7 +76,7 @@ const Experience = () => {
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          Professional Journey
+          Experience & Education
         </motion.h2>
         
         <div className="experience__timeline">

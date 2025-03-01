@@ -5,18 +5,18 @@ import { motion } from 'framer-motion';
 const About = () => {
   const stats = [
     { value: '1+', label: 'Years Experience' },
-    { value: '10+', label: 'Projects Completed' },
-    { value: '20+', label: 'Happy Clients' },
-    { value: '10+', label: 'Awards' }
+    { value: '4+', label: 'Projects Completed' },
+    { value: '9.0', label: 'CGPA' },
+    { value: 'MERN', label: 'Specialist' }
   ];
 
   const interests = [
-    { icon: '🚀', name: 'Space Exploration' },
+    { icon: '💻', name: 'Coding' },
+    { icon: '🌐', name: 'Web Development' },
+    { icon: '📱', name: 'App Development' },
     { icon: '🎮', name: 'Gaming' },
-    { icon: '📚', name: 'Reading' },
-    { icon: '🎨', name: 'Digital Art' },
-    { icon: '🎸', name: 'Music' },
-    { icon: '✈️', name: 'Traveling' }
+    { icon: '📚', name: 'Learning' },
+    { icon: '🎨', name: 'UI/UX Design' }
   ];
 
   const containerVariants = {
@@ -58,22 +58,21 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
             >
-              Passionate Developer
+              Full Stack Developer
             </motion.span>
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Creative Thinker
+              MERN Specialist
             </motion.span>
-
             <motion.span
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6 }}
             >
-              Problem Solver
+              UI/UX Enthusiast
             </motion.span>
           </div>
         </motion.div>
@@ -85,22 +84,19 @@ const About = () => {
           >
             <p>
               Hello! I'm <span className="highlight">Dhruv Vasoya</span>, a passionate full-stack developer 
-              based in India. With a keen eye for detail and a love for clean code, 
-              I transform ideas into powerful digital solutions.
+              specializing in MERN stack development. Currently pursuing B.Tech in Information Technology 
+              at SILVER OAK UNIVERSITY with a CGPA of 9.00/10.0.
             </p>
             <p>
-              My journey in tech started with a simple "Hello World" program, and since then, 
-              I've been on an exciting adventure of continuous learning and growth. I specialize 
-              in building scalable web applications and creating seamless user experiences.
+              With expertise in building scalable web applications and RESTful APIs, I focus on creating 
+              seamless user experiences and robust backend systems. My experience at Aimbrill Techinfo has 
+              honed my skills in developing secure and performant applications using modern web technologies.
             </p>
-            <motion.div 
-              className="about__quote"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.3 }}
-            >
-              "Code is like humor. When you have to explain it, it's bad." - Cory House
-            </motion.div>
+            <div className="about__contact">
+              <p>📧 dhruvvasoya48@gmail.com</p>
+              <p>📱 +91 9327850512</p>
+              <p>🔗 github.com/VasoyaDhruv</p>
+            </div>
           </motion.div>
 
           <motion.div 
@@ -131,7 +127,7 @@ const About = () => {
           className="about__interests"
           variants={itemVariants}
         >
-          <h3>Things I Love</h3>
+          <h3>Areas of Interest</h3>
           <div className="interests__grid">
             {interests.map((interest, index) => (
               <motion.div
@@ -151,26 +147,6 @@ const About = () => {
               </motion.div>
             ))}
           </div>
-        </motion.div>
-
-        <motion.div 
-          className="about__cta"
-          variants={itemVariants}
-        >
-          <motion.button 
-            className="cta__button"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Download CV
-          </motion.button>
-          <motion.button 
-            className="cta__button cta__button--secondary"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Get in Touch
-          </motion.button>
         </motion.div>
       </motion.div>
     </section>
