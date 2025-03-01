@@ -43,11 +43,11 @@ function Projects() {
     //   image: projectImage2,  // Add image here
     // },
     {
-      id: 3,
+      id: 2,
       title: "Weather App",
       description: "Real-time weather application with geolocation",
       link: "https://weather-app-nine-ebon-25.vercel.app/",
-      category: "utility",
+      category: "other",
       tech: ["HTML", "CSS", "JavaScript", "Weather API"],
       features: [
         "Geolocation",
@@ -58,7 +58,7 @@ function Projects() {
       image: projectImage4, // Add image here
     },
     {
-      id: 4,
+      id: 3,
       title: "Shopping Web App",
       description: "User-friendly e-commerce platform",
       link: "https://shopping-app-orpin-one.vercel.app/",
@@ -73,11 +73,11 @@ function Projects() {
       image: projectImage2, // Add image here
     },
     {
-      id: 3,
+      id: 4,
       title: "Hydra",
       description: "Responsive Gaming website",
       link: "https://hydra-vr-landing-page.vercel.app/",
-      category: "gaming",
+      category: "other",
       tech: ["React", "Three.js", "GSAP"],
       features: ["3D Animations", "Responsive Design", "Interactive UI"],
       image: projectImage3,
@@ -88,7 +88,7 @@ function Projects() {
     { id: "all", label: "All Projects" },
     { id: "education", label: "Education" },
     { id: "ecommerce", label: "E-commerce" },
-    { id: "utility", label: "Utility" },
+    { id: "other", label: "Other" },
   ];
 
   const filteredProjects =

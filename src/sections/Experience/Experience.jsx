@@ -25,9 +25,10 @@ const Experience = () => {
       achievements: [
         'Specialized in Object-Oriented Programming (OOP)',
         'Studied Data Structures and Algorithms (DSA)',
-        'Learned Database Management Systems (DBMS)'
+        'Learned Database Management Systems (DBMS)',
+        'Object-Oriented Programming (OOP)',
       ],
-      tech: ['C', 'Java', 'JavaScript', 'DSA', 'DBMS'],
+      tech: ['C', 'Java', 'JavaScript', 'DSA', 'DBMS', 'OOP'],
       logo: '🎓'
     }
   ];
