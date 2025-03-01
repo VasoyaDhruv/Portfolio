@@ -78,7 +78,7 @@ function Projects() {
       description: "Responsive Gaming website",
       link: "https://hydra-vr-landing-page.vercel.app/",
       category: "other",
-      tech: ["React", "Three.js", "GSAP"],
+      tech: ["HTML", "CSS", "JavaScript"],
       features: ["3D Animations", "Responsive Design", "Interactive UI"],
       image: projectImage3,
     },
